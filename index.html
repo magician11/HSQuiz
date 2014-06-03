@@ -3,9 +3,10 @@
 
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Highly Sensitive Quiz</title>
-        <link rel="stylesheet" href="css/foundation.min.css" />
+        <link rel="stylesheet" href="css/foundation.min.css">
+        <link rel="stylesheet" href="css/hsquiz.css">
         <script src="js/vendor/modernizr.js"></script>
     </head>
 
@@ -38,7 +39,7 @@
                             <input type="submit" class="medium radius button">
                         </div>
                         <div class="small-10 columns">
-                            <input type="button" class="medium secondary radius button" value="Reset">
+                            <input type="button" class="medium secondary radius button" value="Reset" ng-click="quiz.resetQuiz()">
                         </div>
                     </div>
                 </form>
@@ -47,7 +48,7 @@
                         <h2><small>Your score:</small> {{(quiz.sensitivities | filter:{resonates: true}).length}}</h2>
                     </div>
 
-                    <p>The following is an extract from the book this test was taken from...</p>
+                    <p>The following is an extract from her <cite>The Highly Sensitive Person</cite> book...</p>
                     <blockquote>
                         <h3>Scoring yourself</h3>
                         <p>If you answered true to twelve or more of the questions, you're probably highly sensitive.</p>

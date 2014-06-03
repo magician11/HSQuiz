@@ -1,0 +1,12 @@
+/* Highly Sensitive Quiz styles */
+
+input[type="checkbox"]+label, input[type="radio"]+label {
+    width: 90%;
+    line-height: 20px;
+    margin-bottom: 18px;
+}
+
+input[type="file"], input[type="checkbox"], input[type="radio"], select {
+    margin: 3px; 
+    vertical-align: top;
+}
