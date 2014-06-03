@@ -4,19 +4,36 @@
 
     var hsquiz = angular.module('hsQuiz', []);
 
-    hsquiz.controller('QuizController', function() {
+    hsquiz.controller('QuizController', function($location, $anchorScroll) {
 
         this.showResult = false;
 
         this.displayResults = function(){
 
             this.showResult = true;
+            this.scrollToTop();
         };
 
         this.resetQuiz = function(){
+
+            //hide the display area
+            this.showResult = false;
+
+            //reset the checkboxes
+            for(var i in this.sensitivities) {
+                this.sensitivities[i].resonates = false;
+            }
             
-            window.location = "index.html";
+            this.scrollToTop();
         };
+
+        //scroll to the top of the page
+        this.scrollToTop = function() {
+
+            $location.hash('top-of-quiz');
+            $anchorScroll();
+        }
+
 
         this.sensitivities = [
             {question: "I seem to be aware of subtleties in my environment.", resonates: false},

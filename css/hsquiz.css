@@ -1,7 +1,7 @@
 /* Highly Sensitive Quiz styles */
 
 input[type="checkbox"]+label, input[type="radio"]+label {
-    width: 90%;
+    width: 80%;
     line-height: 20px;
     margin-bottom: 18px;
 }

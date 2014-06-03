@@ -10,7 +10,7 @@
         <script src="js/vendor/modernizr.js"></script>
     </head>
 
-    <body ng-controller="QuizController as quiz" ng-cloak>
+    <body ng-controller="QuizController as quiz" ng-cloak id="top-of-quiz">
 
         <div class="contain-to-grid sticky">
             <nav class="top-bar" data-topbar>
@@ -54,10 +54,10 @@
                     </div>
 
                     <div class="row">
-                        <div class="small-2 columns">
+                        <div class="small-6 medium-3 large-2 columns">
                             <input type="submit" class="medium radius button" value="Submit">
                         </div>
-                        <div class="small-10 columns">
+                        <div class="small-6 medium-9 large-10 columns">
                             <input type="button" class="medium secondary radius button" value="Reset" ng-click="quiz.resetQuiz()">
                         </div>
                     </div>
