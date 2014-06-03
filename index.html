@@ -22,7 +22,7 @@
                 <div class="panel">
                     <h3>A self test</h3>
                     <p>This quiz is taken from the book <cite>The Highly Sensitive Person</cite> by <a href="http://www.hsperson.com/" rel="author">Elaine N. Aron Ph.D.</a></p>
-                    <p>Answer each question according to the way you feel. Place a tick next to the statement if it is at least somewhat true for you. Otherwise if it is not very true or not at all true for you, leave it unticked. Click submit at the end to calculate your score.</p>
+                    <p>Answer each of the {{quiz.sensitivities.length}} questions according to the way you feel. Place a tick next to the statement if it is at least somewhat true for you. Otherwise if it is not very true or not at all true for you, leave it unticked. Click submit at the end to calculate your score.</p>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 </form>
                 <div class="panel" ng-show="quiz.showResult">
                     <div class="panel callout radius">
-                        <h2><small>Your score:</small> {{(quiz.sensitivities | filter:{resonates: true}).length}}</h2>
+                        <h2><small>Your score:</small> {{(quiz.sensitivities | filter:{resonates: true}).length}} <small>/ {{quiz.sensitivities.length}}</small></h2>
                     </div>
 
                     <p>The following is an extract from her <cite>The Highly Sensitive Person</cite> book...</p>
