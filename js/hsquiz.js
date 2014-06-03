@@ -15,11 +15,7 @@
 
         this.resetQuiz = function(){
             
-            for(var i in this.sensitivities) {
-                this.sensitivities[i].resonates = false;
-            }
-            
-            this.showResult = false;
+            window.location = "index.html";
         };
 
         this.sensitivities = [
