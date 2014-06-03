@@ -16,41 +16,55 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" ng-hide="quiz.showResult">
             <div class="large-12 columns">
                 <div class="panel">
                     <h3>A self test</h3>
-                    <p>Answer each question according to the way you feel. Place a tick next to the statement if it is at least somewhat true for you. Otherwise if it is not very true or not at all true for you, leave it unticked.</p>
+                    <p>This quiz is taken from the book <cite>The Highly Sensitive Person</cite> by <a href="http://www.hsperson.com/" rel="author">Elaine N. Aron Ph.D.</a></p>
+                    <p>Answer each question according to the way you feel. Place a tick next to the statement if it is at least somewhat true for you. Otherwise if it is not very true or not at all true for you, leave it unticked. Click submit at the end to calculate your score.</p>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="large-12 columns">
-                <form>
-                    <div ng-repeat="question in quiz.questions">
-                        <input id="question{{$index+1}}" type="checkbox"><label for="question{{$index+1}}">{{question}}</label>
+                <form ng-submit="quiz.displayResults()" ng-hide="quiz.showResult">
+                    <div ng-repeat="statement in quiz.sensitivities">
+                        <input id="question{{$index+1}}" type="checkbox" ng-model="statement.resonates"><label for="question{{$index+1}}">{{statement.question}}</label>
                     </div>
 
                     <div class="row">
                         <div class="small-2 columns">
-                            <a href="#" class="medium radius button">Submit</a>
+                            <input type="submit" class="medium radius button">
                         </div>
                         <div class="small-10 columns">
-                            <a href="#" class="medium secondary radius button">Reset</a>
+                            <input type="button" class="medium secondary radius button" value="Reset">
                         </div>
                     </div>
                 </form>
+                <div class="panel" ng-show="quiz.showResult">
+                    <div class="panel callout radius">
+                        <h2><small>Your score:</small> {{(quiz.sensitivities | filter:{resonates: true}).length}}</h2>
+                    </div>
 
+                    <p>The following is an extract from the book this test was taken from...</p>
+                    <blockquote>
+                        <h3>Scoring yourself</h3>
+                        <p>If you answered true to twelve or more of the questions, you're probably highly sensitive.</p>
+                        <p>But frankly, no psychological test is so accurate that you should base your life on it. If only one or two questions are true of you but they are <em>extremely</em> true, you might also be justified in calling yourself highly sensitive.</p>
+                    </blockquote>
+                    <p>If you're interested in finding out more on the book, you can <a href="http://www.amazon.com/Highly-Sensitive-Person-Elaine-Ph-D/dp/0553062182">buy it on Amazon</a>.</p>
+
+                    <input type="button" class="medium radius button" ng-click="quiz.resetQuiz()" value="Start quiz over">
+                </div>
             </div>
-        </div>
 
-        <script src="js/vendor/jquery.js"></script>
-        <script src="js/foundation.min.js"></script>
-        <script src="js/angular.min.js"></script>
-        <script src="js/hsquiz.js"></script>
-        <script>
-            $(document).foundation();
-        </script>
-    </body>
-</html>
+            <script src="js/vendor/jquery.js"></script>
+            <script src="js/foundation.min.js"></script>
+            <script src="js/angular.min.js"></script>
+            <script src="js/hsquiz.js"></script>
+            <script>
+                $(document).foundation();
+            </script>
+        </body>
+    </html>
