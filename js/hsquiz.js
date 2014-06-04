@@ -2,7 +2,19 @@
 
 (function () {
 
-    var hsquiz = angular.module('hsQuiz', []);
+    var hsquiz = angular.module('hsQuiz', [])
+
+        .filter('sensitivityLevel', function() {
+            return function(sensitivityNumber) {
+                if (sensitivityNumber >= 1 && sensitivityNumber <= 5) {
+                    return "1 to 5";
+                } else if (sensitivityNumber >= 6 && sensitivityNumber <= 10) {
+                    return "6 to 10";
+                } else {
+                    return "greater than 10";
+                }
+            };
+        })
 
     hsquiz.controller('QuizController', function($location, $anchorScroll, $filter) {
 
@@ -13,15 +25,15 @@
 
             this.displayQuiz = true;
         };
-        
+
         this.displayResults = function(){
 
             this.showResult = true;
             this.scrollToTop();
         };
-        
+
         this.numQsChecked = function() {
-            
+
             return $filter('filter')(this.sensitivities, {resonates:true}).length;
         };
 
@@ -34,7 +46,7 @@
             for(var i in this.sensitivities) {
                 this.sensitivities[i].resonates = false;
             }
-            
+
             this.scrollToTop();
         };
 
