@@ -74,6 +74,8 @@
                     <div class="panel callout radius">
                         <h4 ng-show="quiz.numQsChecked() >= 12">It seems you are highly sensitive.</h4>
                         <h2><small>Your score:</small> {{quiz.numQsChecked()}} <small>/ {{quiz.sensitivities.length}}</small></h2>
+
+                        <h4>Your result : {{ quiz.numQsChecked() | sensitivityLevel }}</h4>
                     </div>
 
                     <p>The following is an extract from her book <cite>The Highly Sensitive Person</cite>...</p>
