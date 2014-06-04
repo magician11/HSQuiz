@@ -23,16 +23,17 @@
 
                 <section class="top-bar-section">
                     <ul class="right">
-                        <li><a href="http://www.goforself.me">Go back to main site</a></li>
                         <li><a href="http://goforself.me/get-in-touch/">Contact Andrew</a></li>
+                        <li><a href="http://www.goforself.me" class="button">Return to www.goforself.me</a></li>
                     </ul>
                 </section>
+
             </nav>
         </div>
 
         <div class="row">
             <div class="large-12 columns">
-                <h1>Are you highly sensitive?</h1>
+                <h2>Are you highly sensitive?</h2>
             </div>
         </div>
 
@@ -46,9 +47,15 @@
             </div>
         </div>
 
+        <div class="row" ng-hide="quiz.displayQuiz">
+            <div class="large-12 columns text-center">
+                <a ng-click="quiz.startQuiz()" class="button large">Start Quiz</a>
+            </div>
+        </div>
+
         <div class="row">
             <div class="large-12 columns">
-                <form ng-submit="quiz.displayResults()" ng-hide="quiz.showResult">
+                <form ng-submit="quiz.displayResults()" ng-hide="quiz.showResult || !quiz.displayQuiz">
                     <div ng-repeat="statement in quiz.sensitivities">
                         <input id="question{{$index+1}}" type="checkbox" ng-model="statement.resonates"><label for="question{{$index+1}}">{{statement.question}}</label>
                     </div>
@@ -62,12 +69,14 @@
                         </div>
                     </div>
                 </form>
+
                 <div class="panel" ng-show="quiz.showResult">
                     <div class="panel callout radius">
-                        <h2><small>Your score:</small> {{(quiz.sensitivities | filter:{resonates: true}).length}} <small>/ {{quiz.sensitivities.length}}</small></h2>
+                        <h4 ng-show="quiz.numQsChecked() >= 12">It seems you are highly sensitive.</h4>
+                        <h2><small>Your score:</small> {{quiz.numQsChecked()}} <small>/ {{quiz.sensitivities.length}}</small></h2>
                     </div>
 
-                    <p>The following is an extract from her <cite>The Highly Sensitive Person</cite> book...</p>
+                    <p>The following is an extract from her book <cite>The Highly Sensitive Person</cite>...</p>
                     <blockquote>
                         <h3>Scoring yourself</h3>
                         <p>If you answered true to twelve or more of the questions, you're probably highly sensitive.</p>
@@ -78,13 +87,24 @@
                     <input type="button" class="medium radius button" ng-click="quiz.resetQuiz()" value="Start quiz over">
                 </div>
             </div>
+        </div>
 
-            <script src="js/vendor/jquery.js"></script>
-            <script src="js/foundation.min.js"></script>
-            <script src="js/angular.min.js"></script>
-            <script src="js/hsquiz.js"></script>
-            <script>
-                $(document).foundation();
-            </script>
-        </body>
-    </html>
+
+        <div class="row">
+            <div class="large-12 columns text-center">
+                <footer>
+                    <hr/>
+                    <p>This web app was created by <a href="http://www.golightlyplus.com">Golightly+</a></p>
+                </footer>
+            </div>
+        </div>
+
+        <script src="js/vendor/jquery.js"></script>
+        <script src="js/foundation.min.js"></script>
+        <script src="js/angular.min.js"></script>
+        <script src="js/hsquiz.js"></script>
+        <script>
+            $(document).foundation();
+        </script>
+    </body>
+</html>

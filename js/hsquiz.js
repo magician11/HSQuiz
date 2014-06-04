@@ -4,14 +4,25 @@
 
     var hsquiz = angular.module('hsQuiz', []);
 
-    hsquiz.controller('QuizController', function($location, $anchorScroll) {
+    hsquiz.controller('QuizController', function($location, $anchorScroll, $filter) {
 
         this.showResult = false;
+        this.displayQuiz = false;
 
+        this.startQuiz = function(){
+
+            this.displayQuiz = true;
+        };
+        
         this.displayResults = function(){
 
             this.showResult = true;
             this.scrollToTop();
+        };
+        
+        this.numQsChecked = function() {
+            
+            return $filter('filter')(this.sensitivities, {resonates:true}).length;
         };
 
         this.resetQuiz = function(){
