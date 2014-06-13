@@ -57,7 +57,7 @@
             <div class="large-12 columns">
                 <form ng-submit="quiz.displayResults()" ng-hide="quiz.showResult || !quiz.displayQuiz">
                     <div ng-repeat="statement in quiz.sensitivities">
-                        <input id="question{{$index+1}}" type="checkbox" ng-model="statement.resonates"><label for="question{{$index+1}}">{{statement.question}}</label>
+                        <hs-question></hs-question>
                     </div>
 
                     <div class="row">

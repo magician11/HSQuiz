@@ -48,3 +48,10 @@ hsquiz.controller('QuizController', function($location, $anchorScroll, $filter, 
     }
 
 });
+
+hsquiz.directive("hsQuestion", function() {
+    return {
+        restrict: "E",
+        template: '<input id="question{{$index+1}}" type="checkbox" ng-model="statement.resonates"><label for="question{{$index+1}}">{{statement.question}}</label>'
+    }
+});
