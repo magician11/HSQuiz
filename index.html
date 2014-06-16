@@ -56,7 +56,7 @@
         <div class="row" ng-hide="quiz.showResult || !quiz.displayQuiz">
             <div class="small-12 columns">
                 <div class="progress large-12 round">
-                    <span class="meter" style="width: {{((quiz.currentPage + 1)/quiz.numberOfPages()) * 100}}%"></span>
+                    <span class="meter" style="width: {{(quiz.currentPage/(quiz.numberOfPages() -1)) * 100}}%"></span>
                 </div>   
                 
                 <br>
