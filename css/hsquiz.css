@@ -3,7 +3,8 @@
 input[type="checkbox"]+label, input[type="radio"]+label {
     width: 80%;
     line-height: 20px;
-    margin-bottom: 18px;
+    margin-bottom: 38px;
+    font-size: 18px;
 }
 
 input[type="file"], input[type="checkbox"], input[type="radio"], select {
